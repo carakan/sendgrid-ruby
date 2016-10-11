@@ -21,16 +21,20 @@ HEREDOC
       {
         "to": [
           {
-            "name": "Carlos RAmos",
-            "email": "carakan@gmail.com"
+            "name": "Mario Postay",
+            "email": "Mario.postay@ogilvy.com"
           },
           {
-            "name": "Carlos RAmosa",
-            "email": "esdecarlos@hotmail.com"
+            "name": "Martin Taborda",
+            "email": "Martin.Taborda@uy.nestle.com"
           },
           {
-            "name": "Carlos RAmosa 2",
-            "email": "carlos.ramos@validoc.net"
+            "name": "Edgardo Alcocer",
+            "email": "Edgardo.Alcocer@ar.nestle.com"
+          },
+          {
+            "name": "Diego Maldonado",
+            "email": "diego.maldonado@brandigital.com"
           }
         ],
         "subject": "Nuevo mensaje desde el formulario de contacto"
