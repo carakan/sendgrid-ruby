@@ -42,7 +42,7 @@ HEREDOC
     "content": [
       {
         "type": "text/plain",
-        "value": nil
+        "value": ""
       }
     ]
   }');
