@@ -4,9 +4,42 @@ include SendGrid
 require 'json'
 
 post '/mail' do
+data = JSON.parse('{
+  "personalizations": [
+    {
+      "to": [
+        {
+          "name": "Carlos RAmos"
+          "email": "carakan@gmail.com"
+        },
+        {
+          "name": "Carlos RAmosa"
+          "email": "esdecarlos@hotmail.com"
+        },
+        {
+          "name": "Carlos RAmosa 2"
+          "email": "carlos.ramos@validoc.net"
+        }
+      ],
+      "subject": "Hello World from the SendGrid Ruby Library!"
+    }
+  ],
+  "from": {
+    "email": "test@example.com"
+  },
+  "content": [
+    {
+      "type": "text/plain",
+      "value": "Hello, Email! blablabla"
+    }
+  ]
+}')
+sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+response = sg.client.mail._("send").post(request_body: data)
+
   from = Email.new(email: 'no-reply@nestle.com.ar')
   subject = 'Mensaje de ' + params[:contact][:name]
-  to = Email.new(email: ['carlos.ramos@validoc.net', 'carakan@gmail.com', 'esdecarlos@hotmail.com']) 
+  to = Email.new(email: ['carlos.ramos@validoc.net', 'carakan@gmail.com', 'esdecarlos@hotmail.com'])
       
   content = Content.new(type: 'text/plain',
                         value: <<-HEREDOC
