@@ -4,7 +4,7 @@ require 'json'
 
 post '/mail' do
 
-  content_txt <<-HEREDOC
+  content_txt =<<-HEREDOC
   <span id="webOrigen">shop.nestle.com.ar</span>
 <span id="catConsulta">#{ params[:contact][:Motivo1] }</span>
 <span id="nombre">#{ params[:contact][:name] }</span>
@@ -46,7 +46,7 @@ HEREDOC
       }
     ]
   }');
-  
+
   data["content"][0]["value"] = content_txt
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._("send").post(request_body: data)
