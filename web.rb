@@ -9,15 +9,15 @@ data = JSON.parse('{
     {
       "to": [
         {
-          "name": "Carlos RAmos"
+          "name": "Carlos RAmos",
           "email": "carakan@gmail.com"
         },
         {
-          "name": "Carlos RAmosa"
+          "name": "Carlos RAmosa",
           "email": "esdecarlos@hotmail.com"
         },
         {
-          "name": "Carlos RAmosa 2"
+          "name": "Carlos RAmosa 2",
           "email": "carlos.ramos@validoc.net"
         }
       ],
