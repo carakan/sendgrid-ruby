@@ -5,15 +5,15 @@ require 'json'
 post '/mail' do
 
   content_txt =<<-HEREDOC
- <span id="webOrigen">shop.nestle.com.ar</span>
- <span id="catConsulta">#{ params[:contact][:Motivo1] }</span>
- <span id="nombre">#{ params[:contact][:name] }</span>
- <span id="telefono">#{ params[:contact][:phone] }</span>
- <span id="email">#{ params[:contact][:email] }</span>
- <span id="tipoConsulta">#{ params[:contact][:Motivo1] }</span>
- <span id="motConsulta">#{ params[:contact][:Motivo2] }</span>
- <span id="consulta">#{ params[:contact][:body] }</span>
- <span id="datProd"></span>
+<span id="webOrigen">shop.nestle.com.ar</span>
+<span id="catConsulta">#{ params[:contact][:Motivo1] }</span>
+<span id="nombre">#{ params[:contact][:name] }</span>
+<span id="telefono">#{ params[:contact][:phone] }</span>
+<span id="email">#{ params[:contact][:email] }</span>
+<span id="tipoConsulta">#{ params[:contact][:Motivo1] }</span>
+<span id="motConsulta">#{ params[:contact][:Motivo2] }</span>
+<span id="consulta">#{ params[:contact][:body] }</span>
+<span id="datProd"></span>
 HEREDOC
 
   data = JSON.parse('{
@@ -51,10 +51,15 @@ HEREDOC
         "type": "text/plain",
         "value": ""
       }
+      {
+        "type": "text/html",
+        "value": ""
+      }
     ]
   }');
 
   data["content"][0]["value"] = content_txt
+  data["content"][1]["value"] = content_txt
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._("send").post(request_body: data)
 
