@@ -35,6 +35,9 @@ HEREDOC
           {
             "name": "Diego Maldonado",
             "email": "diego.maldonado@brandigital.com"
+          },
+          {
+            "email": "Servicios.AlConsumidor@ar.nestle.com"
           }
         ],
         "subject": "Nuevo mensaje desde el formulario de contacto"
