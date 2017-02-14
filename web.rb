@@ -20,7 +20,11 @@ HEREDOC
         "to": [
           {
             "name": "Luis Espinoza",
-            "email": "Luchito.bo@gmail.com"
+            "email": "carakan@gmail.com"
+          },
+          {
+            "name": "Luis Espinoza",
+            "email": "mr@zenlabs.net"
           }
         ],
         "subject": "Nuevo mensaje desde la appMobile"
