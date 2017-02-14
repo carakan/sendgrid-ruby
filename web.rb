@@ -1,19 +1,17 @@
 require 'sinatra'
 require 'sendgrid-ruby'
 require 'json'
+require 'sinatra/cross_origin'
 
 post '/mail' do
+  cross_origin
+  request.body.rewind
+  message = JSON.parse(request.body.read)
 
   content_txt =<<-HEREDOC
-<span id="webOrigen">shop.nestle.com.ar</span>
-<span id="catConsulta">#{ params[:contact][:Motivo1] }</span>
-<span id="nombre">#{ params[:contact][:name] }</span>
-<span id="telefono">#{ params[:contact][:phone] }</span>
-<span id="email">#{ params[:contact][:email] }</span>
-<span id="tipoConsulta">#{ params[:contact][:Motivo1] }</span>
-<span id="motConsulta">#{ params[:contact][:Motivo2] }</span>
-<span id="consulta">#{ params[:contact][:body] }</span>
-<span id="datProd"></span>
+<span id="catConsulta">#{ message[:name] }</span>
+<span id="nombre">#{ message[:email] }</span>
+<span id="telefono">#{ message[:message] }</span>
 HEREDOC
 
   data = JSON.parse('{
@@ -21,30 +19,15 @@ HEREDOC
       {
         "to": [
           {
-            "name": "Mario Postay",
-            "email": "Mario.postay@ogilvy.com"
-          },
-          {
-            "name": "Martin Taborda",
-            "email": "Martin.Taborda@uy.nestle.com"
-          },
-          {
-            "name": "Edgardo Alcocer",
-            "email": "Edgardo.Alcocer@ar.nestle.com"
-          },
-          {
-            "name": "Diego Maldonado",
-            "email": "diego.maldonado@brandigital.com"
-          },
-          {
-            "email": "Servicios.AlConsumidor@ar.nestle.com"
+            "name": "Luis Espinoza",
+            "email": "Luchito.bo@gmail.com"
           }
         ],
-        "subject": "Nuevo mensaje desde el formulario de contacto"
+        "subject": "Nuevo mensaje desde la appMobile"
       }
     ],
     "from": {
-      "email": "no-reply@nestle.com.ar"
+      "email": "no-reply@appContigo.com"
     },
     "content": [
       {
@@ -63,5 +46,9 @@ HEREDOC
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._("send").post(request_body: data)
 
-  redirect 'https://nestle-newdemo.myshopify.com/pages/contacto?email=sent#sent'
+  content_type :json
+  {
+    response: 'message was sent successfully.',
+    api: response
+  }.to_json
 end
