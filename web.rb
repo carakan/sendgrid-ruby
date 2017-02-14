@@ -32,12 +32,8 @@ HEREDOC
       {
         "to": [
           {
-            "name": "Luis Espinoza",
-            "email": "luchito.bo@gmail.com"
-          },
-          {
-            "name": "DEV",
-            "email": "mr@zenlabs.net"
+            "name": "Contacto app Movil",
+            "email": "contacto@dccontigo.com"
           }
         ],
         "subject": "Nuevo mensaje desde la appMobile"
