@@ -39,10 +39,6 @@ HEREDOC
     },
     "content": [
       {
-        "type": "text/plain",
-        "value": ""
-      },
-      {
         "type": "text/html",
         "value": ""
       }
@@ -50,13 +46,13 @@ HEREDOC
   }')
 
   data['content'][0]['value'] = content_txt
-  data["content"][1]["value"] = content_txt
+
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._("send").post(request_body: data)
 
   content_type :json
   {
     response: 'message was sent successfully.',
-    api: response
+    api: response.to_s
   }.to_json
 end
