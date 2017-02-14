@@ -17,7 +17,7 @@ post '/mail' do
 Mensaje de: <b>#{ message["name"] }</b>
   </p>
   <p>
-Email:      <b>#{ message["email"] }</b>
+Teléfono:      <b>#{ message["phone"] }</b>
   </p>
   <p>
 Mensaje:
