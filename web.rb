@@ -53,6 +53,6 @@ HEREDOC
   content_type :json
   {
     response: 'message was sent successfully.',
-    api: response.to_s
+    api: response.inspect
   }.to_json
 end
