@@ -41,15 +41,15 @@ HEREDOC
       {
         "type": "text/plain",
         "value": ""
-      }
+      },
       {
         "type": "text/html",
         "value": ""
       }
     ]
-  }');
+  }')
 
-  data["content"][0]["value"] = content_txt
+  data['content'][0]['value'] = content_txt
   data["content"][1]["value"] = content_txt
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._("send").post(request_body: data)
@@ -60,4 +60,3 @@ HEREDOC
     api: response
   }.to_json
 end
-
