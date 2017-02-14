@@ -13,13 +13,18 @@ post '/mail' do
   message = JSON.parse(request.body.read)
 
   content_txt =<<-HEREDOC
-Mensaje de: #{ message["name"] }
-
-Email:      #{ message["email"] }
-
+  <p>
+Mensaje de: <b>#{ message["name"] }</b>
+  </p>
+  <p>
+Email:      <b>#{ message["email"] }</b>
+  </p>
+  <p>
 Mensaje:
-
+  </p>
+  <p>
 #{ message["message"] }
+  </p>
 HEREDOC
 
   data = JSON.parse('{
@@ -43,10 +48,6 @@ HEREDOC
     },
     "content": [
       {
-        "type": "text/plain",
-        "value": ""
-      },
-      {
         "type": "text/html",
         "value": ""
       }
@@ -54,7 +55,6 @@ HEREDOC
   }')
 
   data['content'][0]['value'] = content_txt
-  data["content"][1]["value"] = content_txt
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._("send").post(request_body: data)
 
