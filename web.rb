@@ -13,13 +13,13 @@ post '/mail' do
   message = JSON.parse(request.body.read)
 
   content_txt =<<-HEREDOC
-Mensaje de: #{ message[:name] }
+Mensaje de: #{ message["name"] }
 
-Email:      #{ message[:email] }
+Email:      #{ message["email"] }
 
 Mensaje:
 
-#{ message[:message] }
+#{ message["message"] }
 HEREDOC
 
   data = JSON.parse('{
