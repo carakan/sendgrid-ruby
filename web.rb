@@ -33,10 +33,10 @@ HEREDOC
         "to": [
           {
             "name": "Luis Espinoza",
-            "email": "carakan@gmail.com"
+            "email": "luchito.bo@gmail.com"
           },
           {
-            "name": "Luis Espinoza",
+            "name": "DEV",
             "email": "mr@zenlabs.net"
           }
         ],
