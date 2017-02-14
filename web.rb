@@ -3,6 +3,10 @@ require 'sendgrid-ruby'
 require 'json'
 require 'sinatra/cross_origin'
 
+configure do
+  enable :cross_origin
+end
+
 post '/mail' do
   cross_origin
   request.body.rewind
