@@ -33,14 +33,14 @@ HEREDOC
         "to": [
           {
             "name": "Contacto app Movil",
-            "email": "contacto@dccontigo.com"
+            "email": "info@dccontigoradio.com"
           }
         ],
         "subject": "Nuevo mensaje desde la appMobile"
       }
     ],
     "from": {
-      "email": "no-reply@appContigo.com"
+      "email": "no-reply@dccontigoradio.com"
     },
     "content": [
       {
